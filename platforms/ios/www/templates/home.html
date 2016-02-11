@@ -1,0 +1,70 @@
+<ion-side-menus>
+
+
+
+
+  <!-- Center Content -->
+    <ion-side-menu-content>
+      <ion-header-bar class="bar-light" style="height: 40px;" align-title="center">
+
+        <div ng-switch on="$state.current.name">
+        <div style="margin-top: -2px;margin-left:10px;" ng-switch-when="app.event" ng-click="goBack()">
+          <div data-ng-show="$state.includes('app.event')" class="button button-clear icon ion-reply" ></div>
+        </div>
+         <div ng-switch-default style="margin-top: -2px;">
+          <div data-ng-show="!$state.includes('app.event')" id="menuClick" class="button button-clear icon ion-navicon" ng-click="menu3D()"></div>
+       </div>
+      </div>
+
+
+        <h1 class="title" style="height: 100%;"> <img id="logo" src="img/logo.png"> </h1>
+        <i class="icon icon-localy1" style="position: absolute;right: 3%; width: 5%" ng-click="shoutForm()"></i>
+      </ion-header-bar>    
+
+            <ion-nav-view name="homeContent"></ion-nav-view>
+
+            <div class="footerContainer">
+
+                <div class="footerBtn" ng-click="showMap()"></div>
+
+            </div>
+        
+    </ion-side-menu-content>
+
+<div id="menuBG" class="outer-nav" style="z-index:999999;">
+                <div class="inner-nav">
+                    <div class="nav-item"> <a ui-sref="app.events" ng-click="closeMenu3D()">
+                    <i class="nav-icon fa fa-home"></i>
+                    Home
+                </a>
+
+                    </div>
+                    <div class="nav-item"> <a ui-sref="app.who" ng-click="closeMenu3D()">
+                    <i class="nav-icon fa fa-user"></i>
+                    Chi Siamo
+                </a>
+
+                    </div>
+                    <div class="nav-item"> <a ui-sref="app.contacts" ng-click="closeMenu3D()">
+                    <i class="nav-icon fa fa-envelope"></i>
+                    Contatti
+                </a>
+
+                    </div>
+                    <div class="nav-item"> <a ui-sref="app.terms" ng-click="closeMenu3D()">
+                    <i class="nav-icon fa fa-file-text"></i>
+                    Termini e Condizioni
+                </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+</ion-side-menus>
+
+
+
+
+<div class="loader">
+</div>

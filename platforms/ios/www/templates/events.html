@@ -1,0 +1,67 @@
+<ion-view view-title="Events" class="perspectiveView" style="background-image: url('img/bgp.png');background-size: cover;">
+  <ion-content class="transformed" id="transformed" ng-click="closeMenu3D()" ng-controller="EventCtrl">
+    <ion-list>
+      <!--
+      <ion-scroll direction="x" class="wide-as-needed">
+        <a class="button inline-button">this is a button : 1</a>
+        <a class="button">this is a button : 2</a>
+        <a class="button">this is a button : 3</a>
+        <a class="button">this is a button : 4</a>
+        <a class="button">this is a button : 5</a>
+        <a class="button">this is a button : 6</a>
+        <a class="button">this is a button : 7</a>
+        <a class="button">this is a button : 8</a>
+        <a class="button">this is a button : 9</a>
+        <a class="button">this is a button : 10</a>
+        <a class="button">this is a button : 11</a>
+        <a class="button">this is a button : 12</a>
+        <a class="button">this is a button : 13</a>
+        <a class="button">this is a button : 14</a>
+        <a class="button">this is a button : 15</a>
+        <a class="button">this is a button : 16</a>
+        
+        
+        
+      </ion-scroll> --> 
+
+        <md-card ng-repeat="(id, event) in events" ui-sref="app.event({eventId:event.$id})" ng-if="
+        ((event.date2.year > today2.year) || ((event.date2.year == today2.year) && (event.date2.month > today2.month)) || ((event.date2.year == today2.year) && (event.date2.month == today2.month) && (event.date2.day >= today2.day))) && event.accepted == 'si'">
+         <div class="cardimage" style=" background: 
+                          linear-gradient(
+                            to bottom,
+                            rgba(0, 0, 0, 0),
+                            rgba(0, 0, 0, 0.6)
+                          ),
+                          url({{event.image}});">
+  
+              <header>
+                <h3>
+                  {{event.$id}}
+                </h3>
+                <div>
+                  <i class="icon icon-localy1"></i>
+                  <h5> {{event.local}} </h5>
+                </div>
+                <h5>{{event.category}}<a style="color: white;">, {{dataIta(event.date,1)}}</a></h5>
+                <div class ="offer">
+                  <h5 style="color: white; font-size: 20px;">{{event.offertatitolo}}</h5>
+                  <h5 style="color: green; font-size: 18px;">{{event.offertacosto}}</h5>
+                </div>
+
+                
+
+              </header>
+        </div>
+
+         
+        </md-card>
+
+
+
+      
+    </ion-list>
+  </ion-content>
+
+
+
+</ion-view>

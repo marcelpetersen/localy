@@ -1,0 +1,27 @@
+<ion-modal-view> 
+		<ion-header-bar align-title="center">
+    		<h1 class="title">Coupon</h1>
+    		<button class="button button-clear" ng-click="closeCoupon() ">Close</button>
+  		</ion-header-bar>     
+	    <ion-content>
+	        <div class="coupon">
+	        	<div class="couponheader">
+	        		<span>Valido fino alla fine dell'evento</span>
+					<img src="{{event.image}}"/>
+					<div class ="couponoffer">
+						<h3>{{event.local}}</h3>
+						<h4>{{event.offertatitolo}}</h4>
+						<h3 style="color: green;">{{event.offertacosto}}</h3>
+						
+					</div>
+				</div>
+				<div class="couponfooter">
+					<img class="barcode" src="img/barcode.png">
+					<h2>{{event.code}}</h2>
+				</div>
+			</div>
+			<div class="screenshot">
+				<i class="icon ion-camera"></i> Fai uno screenshot per salvare il coupon!
+			</div>
+	    </ion-content>
+	</ion-modal-view>

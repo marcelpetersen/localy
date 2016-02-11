@@ -1,0 +1,28 @@
+
+	<ion-modal-view class="popover-mappa" ng-controller="MapCtrl"> 
+		<ion-header-bar align-title="center">
+    		<h1 class="title" style="font-size: 18px;
+    font-family: fontLocaly;
+    font-weight: bold;">
+    Mappa</h1>
+    		<button class="button button-clear" ng-click="closeMap() ">Close</button>
+  		</ion-header-bar>     
+	    <ion-content data-tap-disabled="true" ng-controller="EventsCtrl">
+	        <ui-gmap-google-map center='map.center' pan ='map.pan' zoom='map.zoom'>
+	        	<ui-gmap-marker coords="marker1.coords" options="marker1.options" events="marker1.events" idkey="marker1.id" click="'marker1.onClick'">
+	        	</ui-gmap-marker>
+	        	<div ng-repeat="(id, event) in events" ng-if="
+        ((event.date2.year > today2.year) || ((event.date2.year == today2.year) && (event.date2.month > today2.month)) || ((event.date2.year == today2.year) && (event.date2.month == today2.month) && (event.date2.day >= today2.day))) && event.accepted == 'si'">
+		        	<ui-gmap-marker  coords="event.location" options="marker2.options" idkey="id" events="marker2.events" >
+
+		        		<ui-gmap-window
+						        options="windowOptions" 
+						        closeClick="closeClick()"
+						        >
+						        {{event.title}} 
+						</ui-gmap-window>
+		        	</ui-gmap-marker>
+	        	</div>
+	        </ui-gmap-google-map>
+	    </ion-content>
+	</ion-modal-view>

@@ -1,0 +1,136 @@
+<ion-modal-view >
+  <ion-header-bar align-title="center">
+    <h1 class="title" style="font-size: 18px;
+    font-family: fontLocaly;
+    font-weight: bold;">
+    Crea Event<i class="icon icon-localy1"   style="width: 10px;
+    font-size: 12px;
+    position: absolute;
+    margin-top: 19px;
+    margin-left: 1px;"
+></i></h1>
+    <button class="button button-clear" ng-click="closeShoutForm() ">Close</button>
+  </ion-header-bar>
+
+  <ion-content>
+  <div class="list card eventDesc">
+      <md-list class="list" scroll="false" ng-controller="EventsCtrl">
+        <form  ng-submit="createEvent(event)" novalidate name="sform">
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Nome Locale</span>
+            <input type="text" name="locname" placeholder="Bar, Ristorante, Discoteca..." maxlength="30" ng-model="event.local" required>
+          </label>
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Nome Evento</span>
+            <input type="text" name="eventname" placeholder="Aperitivo, Party..." ng-model="event.title" ng-minlength="3" required>
+          </label>
+
+          <label class="item item-input item-select">
+            <span class="input-label">Categoria</span>
+            <select ng-model="event.category">
+              <option>Food&Drink</option>
+              <option>Disco</option>
+              <option>Musica Live</option>
+              <option>Altro</option>
+            </select>
+          </label>
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Luogo</span>
+             <input type="text" name="place" placeholder="Indirizzo dell'evento" id="Autocomplete" ng-model="event.location" googleplace="" required>
+          </label>
+
+    
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Data</span>
+            <input type="date" name="date" ng-model="event.date" required>
+          </label>
+
+
+
+
+
+          <div class="row">
+            <label class="item item-input item-stacked-label col" style="border-width:0px !important;">
+              <span class="input-label ">Ora (Inizio)</span>
+              <input type="time" ng-model="event.start_time" required>
+            </label>
+
+            <label class="item item-input item-stacked-label col" style="border-width:0px !important;">
+              <span class="input-label ">Ora (Fine)</span>
+              <input type="time" ng-model="event.end_time" required>
+            </label>
+          </div>
+
+
+
+
+          
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Descrizione</span>
+            <input type="text" placeholder="..." ng-model="event.desc" required>
+          </label>
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Offerta/Coupon</span>
+            <input type="text" placeholder="Descrivere l'offerta/coupon oppure lasciare vuoto" ng-model="event.coupon" >
+          </label>
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Telefono</span>
+            <input type="tel" name="phone" placeholder="..." ng-model="event.phone" required>
+          </label>
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Indirizzo E-mail </span>
+            <input type="text" name="email" placeholder="Non verrà reso publico" ng-model="event.mail">
+          </label>
+
+          <div class="padding row">
+            <button type="button" class="button button-full button-positive"  ng-click="selectImage()">
+                        Seleziona Immagine
+            </button>
+            <button type="button" class="button button-full button-positive" ng-click="getImage()">
+                        Carica Immagine
+            </button>
+            <!-- <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="text-align: center"> -->
+          </div>
+
+          <img ng-src="{{collection.selectedImage}}" style="width:100%; height: auto;"/>
+          <img src="{{selectedImg.img}}" class="selectedImg" />
+        
+
+          <li class="item item-checkbox">
+             <label class="checkbox" style="position: inherit;">
+               <input style="position: absolute; left: -56px; margin-top: 15px;" ng-model="event.check" type="checkbox" ng-required="true" name="terms">
+               <span style="margin-left: -14px; font-size: 17px;" > Accetto <b> Termini e Condizioni </b> <br> presenti nel Menù laterale </span>
+             </label>
+          </li>
+
+          <div class="padding" style="color: red;">
+              <p ng-show="sform.locname.$error.required">* Inserire nome locale</p>
+              <p ng-show="sform.eventname.$error.required">* Inserire nome evento</p>
+              <p ng-show="sform.place.$error.required">* Inserire luogo</p>
+              <p ng-show="sform.date.$error.required">* Inserire data</p>
+              <p ng-show="sform.email.$error.email">* Inserire una e-mail valida</p>
+
+
+
+          </div>
+
+
+
+          <div class="padding">
+                  
+                  <button type="submit" class="button button-block button-positive" ng-disabled="sform.$invalid" ng-click="showPopup()" style="width: 94%;">Publica Evento</button>
+          </div>
+
+        </form>
+        
+      </md-list>
+    </div>
+  </ion-content>
+</ion-modal-view>

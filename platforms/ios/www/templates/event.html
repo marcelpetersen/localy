@@ -1,0 +1,59 @@
+<ion-view>
+	<ion-content>
+		<div id="eventCover">
+			<img id="imgCover" src="{{event.image}}">
+			<h1 id="titleCover">{{id}}</h1>
+		</div>
+		<div id="eventCont">
+			<ion-tabs class="tabs-positive tabs-icon-top">
+
+				  <ion-tab title="Info" icon-on="ion-ios-information" icon-off="ion-ios-information-outline">
+				    <div class="list card eventDesc">
+				    	<div class="item item-body">
+							<i class="icon ion-wineglass"></i>
+						    <p>{{event.category}}</p>
+						    <i class="icon ion-android-calendar"></i>
+							<p>{{dataIta(event.date,0)}}</p>
+							<i class="icon ion-clock "></i>
+							<p>Dalle ore {{event.start_time}} alle ore {{event.end_time}}</p>
+						</div>
+
+						<div class="item item-body">
+							<i class="icon ion-model-s"></i>
+							<p> {{event.address}} </p>
+						</div>
+
+						<div class="item item-body">
+							<p> {{event.desc}} </p>
+							<button type="button" class="button button-full button-positive" ng-click="showCoupon()"> Scarica Coupon</button>
+						</div>
+
+					
+			        </div>
+
+
+				  </ion-tab>
+
+
+
+				  <ion-tab title="Mappa" icon-on="ion-map" icon-off="ion-map" ng-controller="MapCtrl">
+				  	<div class="card eventDesc">
+
+					    <ui-gmap-google-map center="locmap.location" zoom='13' pan="1" >
+
+				        	<ui-gmap-marker coords="event.location" options="marker2.options" events="marker2.events" idkey="id">
+				        	</ui-gmap-marker>
+
+				  
+				   
+		        		</ui-gmap-google-map>
+		        		<div class="item item-body">
+		        			<button type="button" class="button button-full button-positive mapbutton" ng-click="openGeo(event.location.latitude,event.location.longitude)" > Ottieni Indicazioni </button>
+		        		</div>
+
+	        		</div>
+				  </ion-tab>
+			</ion-tabs>
+		</div>
+	</ion-content>
+</ion-view>
